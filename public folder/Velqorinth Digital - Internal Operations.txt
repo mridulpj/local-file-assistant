@@ -1,0 +1,42 @@
+1. Change Request
+- Request ID: CR-7824
+- Title: Customer Portal Authentication Upgrade
+- Priority: High
+- Requested By: Platform Engineering
+- Status: Pending Approval
+- Target Release: 12 November 2026
+2. IT Asset Assignment
+- Asset Tag: AST-3096
+- Device: Lenovo ThinkPad T14
+- Assigned To: Neha Krishnan
+- Department: Quality Assurance
+- Issued Date: 5 October 2026
+- Asset Status: Active
+3. Meeting Record
+- Meeting ID: MTG-1462
+- Title: Quarterly Technology Roadmap Review
+- Date: 28 October 2026
+- Organizer: Office of Technology Strategy
+- Attendees: Engineering, Product Management, Information Security
+- Outcome: Action items pending documentation
+4. Procurement Request
+- Request ID: PR-5618
+- Item: Cloud Development Environment Licenses
+- Requested Quantity: 25
+- Estimated Cost: ₹1,85,000
+- Requesting Department: Cloud Platform Engineering
+- Approval Status: Under Review
+5. Compliance Record
+- Record ID: CMP-2047
+- Assessment: Information Security Controls Review
+- Responsible Team: Governance, Risk and Compliance
+- Review Period: Q3 2026
+- Completion Status: In Progress
+- Next Review Date: 15 December 2026
+6. Service-Level Agreement (SLA)
+- SLA ID: SLA-0018
+- Service: Internal Developer Platform
+- Availability Target: 99.9%
+- Incident Acknowledgment Target: 15 minutes for Priority 1
+- Service Owner: Platform Operations
+- Review Frequency: Quarterly
