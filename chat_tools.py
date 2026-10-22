@@ -13,9 +13,9 @@ TEMPERATURE = 0.4
 BASE = (Path(__file__).parent / "public folder").resolve()
 MAX_FILE_CHARS = 3000          # maximum characters read from a file
 MAX_TOOL_ROUNDS = 5            # how many times the assistant can call tools in a row before we stop and return the reply
-CONTEXT_BUDGET_CHARS = 12000   # how much of the conversation history we keep before summarizing
-KEEP_RECENT_TURNS = 2          # how many recent user turns we keep in full when summarizing
-TOOL_SNIPPET_CHARS = 600       # how many characters of a tool result we show in the conversation transcript when summarizing
+CONTEXT_BUDGET_CHARS = 12000   # how much of the conversation history we keep before summarising
+KEEP_RECENT_TURNS = 2          # how many recent user turns we keep in full when summarising
+TOOL_SNIPPET_CHARS = 600       # how many characters of a tool result we show in the conversation transcript when summarising
 
 SYSTEM = (
     "You are a helpful and accurate assistant. Answer general questions directly "
@@ -226,7 +226,7 @@ def _transcript(msgs) -> str:
     return "\n".join(lines)
 
 
-def summarize(previous: str, old_msgs) -> str | None:
+def summarise(previous: str, old_msgs) -> str | None:
     prompt = (
         "Condense the conversation below into a compact summary of at most "
         "200 words. Keep: the user's goals and open questions, names, numbers, "
@@ -237,18 +237,18 @@ def summarize(previous: str, old_msgs) -> str | None:
         prompt += f"EARLIER SUMMARY:\n{previous}\n\n"
     prompt += f"NEW MESSAGES:\n{_transcript(old_msgs)}"
 
-    spinner = Spinner("Summarizing")
+    spinner = Spinner("summarising")
     spinner.start()
     try:
-        with client.chat.completions.create(
+        resp = client.chat.completions.create(
             model=MODEL,
             messages=[{"role": "user", "content": prompt}],
             temperature=TEMPERATURE,
-        ) as resp:
-            text = resp.choices[0].message.content or ""
-            # Some reasoning models leak <think> blocks into the content
-            text = re.sub(r"<think>.*?</think>", "", text, flags=re.DOTALL).strip()
-            return text or None
+        )
+        text = resp.choices[0].message.content or ""
+        # Some reasoning models leak <think> blocks into the content
+        text = re.sub(r"<think>.*?</think>", "", text, flags=re.DOTALL).strip()
+        return text or None
     except Exception:
         return None   # on failure, keep the full history untouched
     finally:
@@ -271,7 +271,7 @@ def compact_history(messages) -> None:
     cut = user_idx[-KEEP_RECENT_TURNS]
 
     previous = messages[1]["content"][len(SUMMARY_PREFIX):] if has_summary else ""
-    summary = summarize(previous, messages[start:cut])
+    summary = summarise(previous, messages[start:cut])
     if summary:
         messages[1:cut] = [{"role": "system", "content": SUMMARY_PREFIX + summary}]
 
