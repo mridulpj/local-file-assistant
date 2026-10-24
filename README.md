@@ -1,6 +1,6 @@
 # Local File Assistant
 
-A command-line chatbot that uses a local LLM via [Ollama](https://ollama.com) or a compatible cloud model API to answer questions about files in a folder. It uses tool calling, so the model decides when to list or read files.
+A command-line chatbot that uses a local LLM via [Ollama](https://ollama.com) or a compatible cloud model API to answer questions about files in a local folder/directory. It uses tool calling, so the model decides when to list or read files and provides info to the user based on their questions.
 
 ## Features
 
